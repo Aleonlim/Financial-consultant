@@ -2,6 +2,7 @@ import { Operation } from '../model/types'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import {CURRENCY_NAMES} from "@/shared/config/currency"
 import { ContextMenu } from '@/shared/ui/ContextMenu/ContextMenu'
+import {useTranslation} from "react-i18next";
 
 type OperationCardProps = {
   operation: Operation
@@ -14,7 +15,7 @@ type OperationCardProps = {
 }
 
 export function OperationCard({ operation, actions, className, onClick }: OperationCardProps) {
-
+  const { t } = useTranslation()
 
   return (
     <div
@@ -25,7 +26,7 @@ export function OperationCard({ operation, actions, className, onClick }: Operat
 
       <div className="flex flex-col ">
         <p>{operation.toName}</p>
-        <p className='text-gray-500 font-medium'>{operation.fromName || 'Доход'}</p>
+        <p className='text-gray-500 font-medium'>{operation.fromName || t("operations.income")}</p>
       </div>
 
 

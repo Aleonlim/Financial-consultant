@@ -34,7 +34,7 @@ export default function Layout() {
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeLinkClass : ''}`}
           >
-            {t('accounts')}
+            {t('accounts.accounts')}
           </NavLink>
 
           <NavLink
@@ -42,7 +42,7 @@ export default function Layout() {
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeLinkClass : ''}`}
           >
-            {t('operations')}
+            {t('operations.operations')}
           </NavLink>
 
           <NavLink
@@ -50,7 +50,7 @@ export default function Layout() {
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeLinkClass : ''}`}
           >
-            {t('funds')}
+            {t('funds.funds')}
           </NavLink>
 
           <NavLink
@@ -58,7 +58,7 @@ export default function Layout() {
             className={({ isActive }) =>
               `${linkClass} ${isActive ? activeLinkClass : ''}`}
           >
-            {t('analytics')}
+            {t('analytics.analytics')}
           </NavLink>
 
           <NavLink

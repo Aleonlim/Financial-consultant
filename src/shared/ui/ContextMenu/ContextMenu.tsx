@@ -52,7 +52,7 @@ export const ContextMenu = ({ actions }: Props) => {
                       setOpen(false)
                       a.onClick()
                     }}
-                    className="block px-4 py-2 hover:bg-gray-100 w-full text-left">
+                    className="block px-4 py-2 hover:bg-gray-100 w-full text-left whitespace-nowrap">
               {a.label}
             </button>
           ))}

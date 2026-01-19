@@ -6,6 +6,7 @@ import { getCategories } from '@/shared/api/categories'
 import { createOperation } from '@/shared/api/operations'
 import { Currency } from '@/shared/config/currency'
 import { Account } from '@/entities/account/model/types'
+import {useTranslation} from "react-i18next";
 
 type Props = {
   defaultFrom?: { kind: 'account' | 'deposit' | 'investment' | 'credit' ; id: number } | null
@@ -17,6 +18,8 @@ type SelectFromValue = 'income' | `account:${number}` | `fund:${number}`
 type SelectToValue =`category:${number}` | `account:${number}` | `fund:${number}`
 
 export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
+  const { t } = useTranslation()
+
   const [accounts, setAccounts] = useState<Account[]>([])
   const [funds, setFunds] = useState<any[]>([])
   const [categories, setCategories] = useState<any[]>([])
@@ -91,16 +94,16 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
   return (
     <div className="flex flex-col gap-y-4">
       <div>
-        <label className="block mb-1 text-sm">Откуда</label>
+        <label className="block mb-1 text-sm">{t("generalModal.from")}</label>
         <select
           value={from}
           onChange={e => setFrom(e.target.value as SelectFromValue)}
           className="w-full border rounded px-2 py-1"
         >
-          <option value="" disabled>Выберите</option>
-          <option value="income">Доход</option>
+          <option value="" disabled>{t("generalModal.choose")}</option>
+          <option value="income">{t("operations.income")}</option>
 
-          <optgroup label='----- счета -----'>
+          <optgroup label={t("accounts.accounts").toLowerCase()}>
             {accounts.map(a => (
               <option key={`account:${a.id}`} value={`account:${a.id}`}>
                 {a.name}
@@ -108,7 +111,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
             ))}
           </optgroup>
 
-          <optgroup label='----- депозиты -----'>
+          <optgroup label={t("funds.deposits").toLowerCase()}>
             {funds.filter(f => f.type === 'deposit').map(f => (
                 <option key={`fund:${f.id}`} value={`fund:${f.id}`}>
                   {f.name}
@@ -121,15 +124,15 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
 
 
       <div>
-        <label className="block mb-1 text-sm">Куда</label>
+        <label className="block mb-1 text-sm">{t("generalModal.to")}</label>
         <select
           value={to}
           onChange={e => setTo(e.target.value as SelectToValue)}
           className="w-full border rounded px-2 py-1"
         >
-          <option value="" disabled>Выберите</option>
+          <option value="" disabled>{t("generalModal.choose")}</option>
 
-          <optgroup label='----- счета -----'>
+          <optgroup label={t("accounts.accounts").toLowerCase()}>
             {accounts.map(a => (
               <option key={`account:${a.id}`} value={`account:${a.id}`}>
                 {a.name}
@@ -137,7 +140,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
             ))}
           </optgroup>
 
-          <optgroup label='----- депозиты -----'>
+          <optgroup label={t("funds.deposits").toLowerCase()}>
             {funds.filter(f => f.type === 'deposit').map(f => (
               <option key={`fund:${f.id}`} value={`fund:${f.id}`}>
                 {f.name}
@@ -146,7 +149,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
             }
           </optgroup>
 
-          <optgroup label='----- инвестиции -----'>
+          <optgroup label={t("funds.investments").toLowerCase()}>
             {funds.filter(f => f.type === 'investment').map(f => (
               <option key={`fund:${f.id}`} value={`fund:${f.id}`}>
                 {f.name}
@@ -155,7 +158,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
             }
           </optgroup>
 
-          <optgroup label='----- кредиты -----'>
+          <optgroup label={t("funds.loans").toLowerCase()}>
             {funds.filter(f => f.type === 'credit').map(f => (
               <option key={`fund:${f.id}`} value={`fund:${f.id}`}>
                 {f.name}
@@ -164,7 +167,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
             }
           </optgroup>
 
-          <optgroup label='----- категории, подкатегории -----'>
+          <optgroup label={`${t("generalModal.categories")}, ${t("generalModal.subcategories")}`.toLowerCase()}>
             {categories.map(c => (
               <option key={`category:${c.id}`} value={`category:${c.id}`}>
                 {c.name}
@@ -175,7 +178,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
       </div>
 
       <div>
-        <label className="block mb-1 text-sm">Сумма</label>
+        <label className="block mb-1 text-sm">{t("generalModal.amount")}</label>
         <div className="relative">
           <input
             type="number"
@@ -192,7 +195,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
       </div>
 
       <div>
-        <label className="block mb-1 text-sm">Комментарий</label>
+        <label className="block mb-1 text-sm">{t("generalModal.comment")}</label>
         <textarea
           value={comment}
           maxLength={200}
@@ -205,7 +208,7 @@ export function AddOperationForm({ defaultFrom, onSuccess }: Props) {
       </div>
 
       <Button onClick={handleSubmit}>
-        Сохранить
+        {t("generalModal.save")}
       </Button>
     </div>
   )

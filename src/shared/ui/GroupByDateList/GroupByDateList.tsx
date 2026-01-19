@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { formatDate } from '@/shared/utils/formatDate'
+import {useTranslation} from "react-i18next";
 
 type WithDate = {
   date: string
@@ -14,6 +15,8 @@ export function GroupedByDateList<T extends WithDate>({
                                                         items,
                                                         renderItem,
                                                       }: Props<T>) {
+  const { t } = useTranslation()
+
   const grouped = items.reduce<Record<string, T[]>>((acc, item) => {
     if (!acc[item.date]) acc[item.date] = []
     acc[item.date].push(item)
@@ -29,7 +32,7 @@ export function GroupedByDateList<T extends WithDate>({
       {sortedDates.map(date => (
         <li key={date}>
           <p className="mb-2 text-sm text-gray-700 font-medium">
-            {formatDate(date)}
+            {formatDate(date, t)}
           </p>
 
           <ul className="flex flex-col gap-y-2">

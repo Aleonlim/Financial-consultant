@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react'
 import { getAccounts } from '@/shared/api/accounts'
 import { Account } from '@/entities/account/model/types'
 import { BalanceExpenseChart } from '@/features/chart/balance-expense-chart/BalanceExpenseChart'
+import {useTranslation} from "react-i18next";
 
 type Period = 'week' | 'month' | '3months'
 
 export default function AnalyticsPage() {
+  const { t } = useTranslation()
+
   const [accounts, setAccounts] = useState<Account[]>([])
   const [accountId, setAccountId] = useState<number | null>(null)
   const [period, setPeriod] = useState<Period>('month')
@@ -16,14 +19,14 @@ export default function AnalyticsPage() {
 
   return (
     <div className="flex flex-col gap-y-[20px]">
-      <p className="text-[20px]">Аналитика</p>
+      <p className="text-[20px]">{t("analytics.analytics")}</p>
 
       <div className="flex gap-x-[20px]">
         <select
           onChange={e => setAccountId(Number(e.target.value))}
           className="border p-[5px]"
         >
-          <option>Выберите счёт</option>
+          <option>{t("analytics.chooseAccount")}</option>
           {accounts.map(a => (
             <option key={a.id} value={a.id}>
               {a.name}
@@ -36,9 +39,9 @@ export default function AnalyticsPage() {
           onChange={e => setPeriod(e.target.value as Period)}
           className="border p-[5px]"
         >
-          <option value="week">Неделя</option>
-          <option value="month">Месяц</option>
-          <option value="3months">3 месяца</option>
+          <option value="week">{t("date.week")}</option>
+          <option value="month">{t("date.month")}</option>
+          <option value="3months">{t("date.3months")}</option>
         </select>
       </div>
 
@@ -49,7 +52,6 @@ export default function AnalyticsPage() {
             period={period}
           />
 
-          {/* сюда потом */}
           {/* <ExpensesByCategoryChart /> */}
           {/* <IncomeVsExpenseChart /> */}
         </>

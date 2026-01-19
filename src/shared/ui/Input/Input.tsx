@@ -26,7 +26,7 @@ export function Input(props: InputProps) {
   return (
     <div className={`flex flex-col gap-1 ${containerClassName ?? ''}`}>
       {label && (
-        <label className="text-sm text-gray-700">
+        <label className="text-sm">
           {label}
         </label>
       )}

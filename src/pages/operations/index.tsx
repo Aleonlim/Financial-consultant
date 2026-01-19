@@ -9,8 +9,10 @@ import {Modal} from "@/shared/ui/Modal/Modal"
 import { GroupedByDateList } from '@/shared/ui/GroupByDateList/GroupByDateList'
 import { formatDate } from '@/shared/utils/formatDate'
 import { CURRENCY_NAMES } from "@/shared/config/currency"
+import {useTranslation} from "react-i18next";
 
 export default function OperationsPage() {
+  const { t } = useTranslation()
   const [operations, setOperations] = useState<Operation[]>([])
 
   const [selectedOperation, setSelectedOperation] = useState<Operation>()
@@ -44,9 +46,9 @@ export default function OperationsPage() {
 
   return (
     <div>
-      <p className="text-[20px] mb-[50px]">История операций</p>
+      <p className="text-[20px] mb-[50px]">{t('operations.operationHistory')}</p>
       <Button className="mb-[20px]" onClick={handleAddOperation}>
-        <AddIcon /> Добавить операцию
+        <AddIcon /> {t('operations.addOperation')}
       </Button>
 
       <GroupedByDateList
@@ -56,7 +58,7 @@ export default function OperationsPage() {
             key={operation.id}
             operation={operation}
             actions={[
-              { label: 'Удалить', onClick: () => handleDeleteOperation(operation.id) },
+              { label: t('generalModal.delete'), onClick: () => handleDeleteOperation(operation.id) },
             ]}
             onClick={() => handleOpenDetails(operation)}
           />
@@ -68,8 +70,8 @@ export default function OperationsPage() {
         onClose={() => setModalOpen(false)}
         title={
           modalType === 'addOperation'
-            ? 'Добавить операцию'
-            : 'Детали операции'
+            ? t('operations.addOperation')
+            : t('operations.operationDetails')
         }
       >
         {modalType === 'addOperation' && (
@@ -84,11 +86,11 @@ export default function OperationsPage() {
 
         {modalType === 'operationDetails' &&
           <div className="flex flex-col gap-y-[15px]">
-            <p>Сумма: {selectedOperation?.id} {selectedOperation?.currency ? CURRENCY_NAMES[selectedOperation?.currency] : ''}</p>
-            <p>Откуда: {selectedOperation?.fromName ?? 'Доход'}</p>
-            <p>Куда: {selectedOperation?.toName}</p>
-            <p>Дата: {selectedOperation ? formatDate(selectedOperation?.date) : 'не указана'}</p>
-            <p>Комментарий: {selectedOperation?.comment || '-'}</p>
+            <p>{t('generalModal.amount')}: {selectedOperation?.id} {selectedOperation?.currency ? CURRENCY_NAMES[selectedOperation?.currency] : ''}</p>
+            <p>{t('generalModal.from')}: {selectedOperation?.fromName ?? t('operations.income').toLowerCase()}</p>
+            <p>{t('generalModal.to')}: {selectedOperation?.toName}</p>
+            <p>{t('generalModal.date')}: {selectedOperation ? formatDate(selectedOperation?.date, t) : '-'}</p>
+            <p>{t('generalModal.comment')}: {selectedOperation?.comment || '-'}</p>
           </div>
         }
       </Modal>

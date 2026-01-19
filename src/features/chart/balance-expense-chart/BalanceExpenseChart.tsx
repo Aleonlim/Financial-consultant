@@ -11,6 +11,7 @@ import {
   Tooltip
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
+import {useTranslation} from "react-i18next";
 
 ChartJS.register(
   LineElement,
@@ -29,6 +30,7 @@ type Props = {
 }
 
 export function BalanceExpenseChart({ accountId, period }: Props) {
+  const { t } = useTranslation()
   const [data, setData] = useState<any[]>([])
 
   useEffect(() => {
@@ -38,19 +40,19 @@ export function BalanceExpenseChart({ accountId, period }: Props) {
   if (!data.length) return null
 
   return (
-    <ChartCard title="Баланс и расходы">
+    <ChartCard title={t("balanceAndExpenses")}>
       <Line
         data={{
           labels: data.map(d => d.date),
           datasets: [
             {
-              label: 'Баланс',
+              label: t("analytics.balance"),
               data: data.map(d => d.balance),
               borderColor: '#4f46e5',
               backgroundColor: '#4f46e5'
             },
             {
-              label: 'Расходы',
+              label: t("analytics.expenses"),
               data: data.map(d => d.expenses),
               borderColor: '#ef4444',
               backgroundColor: '#ef4444'

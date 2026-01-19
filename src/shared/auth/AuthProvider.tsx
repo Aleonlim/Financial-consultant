@@ -10,6 +10,7 @@ type AuthContextType = {
   user: User | null
   login: (username: string, password: string) => Promise<void>
   logout: () => void
+  changePassword: (oldPassword: string, newPassword: string) => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -40,13 +41,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  function changePassword(oldPassword: string, newPassword: string) {
+    const found = db.onlyUser.find(
+      u => u.username === user?.username)
+    if (found) {
+      if (oldPassword !== found.password) {
+        throw new Error(t("invalidOldPassword"))
+      }
+      Object.assign(found, {password: newPassword})
+    } else {
+      throw new Error()
+    }
+  }
+
   function logout() {
     setUser(null)
     localStorage.removeItem('user')
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, changePassword}}>
       {children}
     </AuthContext.Provider>
   )

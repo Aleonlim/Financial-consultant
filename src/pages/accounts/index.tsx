@@ -10,8 +10,11 @@ import { deleteAccount } from '@/shared/api/accounts'
 import { Modal } from '@/shared/ui/Modal/Modal'
 import { AddOperationForm } from '@/features/operation/add-operation/AddOperationForm'
 import {AccountForm} from "@/features/account/account-form/AccountForm";
+import {useTranslation} from "react-i18next";
 
 export default function AccountsPage() {
+  const { t } = useTranslation()
+
   const [accounts, setAccounts] = useState<Account[]>([])
 
   const [modalOpen, setModalOpen] = useState(false)
@@ -62,7 +65,7 @@ export default function AccountsPage() {
   return (
     <div>
       <p className="text-[20px] mb-[50px]">
-        Общий баланс на счетах:{' '}
+        {`${t("accounts.totalAccountBalance")}: `}
         <span className="font-semibold">
           {Math.round(totalBalanceRub).toLocaleString()} {CURRENCY_NAMES['RUB']}
         </span>
@@ -70,10 +73,10 @@ export default function AccountsPage() {
 
       <div className="mb-[20px] flex justify-between">
         <Button onClick={() => handleAddOperation(null)}>
-          <AddIcon /> Добавить операцию
+          <AddIcon /> {t("operations.addOperation")}
         </Button>
         <Button onClick={handleAddAccount}>
-          <AddIcon /> Добавить счет
+          <AddIcon /> {t("accounts.addAccount")}
         </Button>
       </div>
 
@@ -83,9 +86,9 @@ export default function AccountsPage() {
             key={account.id}
             account={account}
             actions={[
-                { label: 'Добавить операцию', onClick: () => handleAddOperation(account) },
-                { label: 'Редактировать', onClick: () => handleEditAccount(account) },
-                { label: 'Удалить', onClick: () => handleDeleteAccount(account.id) },
+                { label: t("operations.addOperation"), onClick: () => handleAddOperation(account) },
+                { label: t("generalModal.edit"), onClick: () => handleEditAccount(account) },
+                { label: t("generalModal.delete"), onClick: () => handleDeleteAccount(account.id) },
             ]}
           />
         ))}
@@ -98,10 +101,10 @@ export default function AccountsPage() {
         onClose={() => setModalOpen(false)}
         title={
           modalType === 'editAccount'
-            ? 'Редактировать счет'
+            ? t("accounts.editAccount")
             : modalType === 'addOperation'
-              ? 'Добавить операцию'
-              : 'Добавить счет'
+              ? t("operations.addOperation")
+              : t("accounts.addAccount")
         }
       >
         {modalType === 'addOperation' && (

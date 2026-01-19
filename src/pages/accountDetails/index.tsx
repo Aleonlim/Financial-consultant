@@ -13,8 +13,10 @@ import {Operation} from "@/entities/operation/model/types";
 import {deleteOperation} from "@/shared/api/operations";
 import {AccountForm} from "@/features/account/account-form/AccountForm";
 import {formatDate} from "@/shared/utils/formatDate";
+import {useTranslation} from "react-i18next";
 
 export function AccountDetailsPage() {
+  const { t } = useTranslation()
   const {accountId} = useParams()
   const accountIdNum = Number(accountId)
 
@@ -70,10 +72,10 @@ export function AccountDetailsPage() {
 
       <div className="mb-[20px] flex justify-between">
         <Button onClick={handleAddOperation}>
-          <AddIcon /> Добавить операцию
+          <AddIcon /> {t("operations.addOperation")}
         </Button>
         <Button onClick={handleEditAccount}>
-          <AddIcon /> Редактировать
+          {t("generalModal.edit")}
         </Button>
       </div>
 
@@ -84,7 +86,7 @@ export function AccountDetailsPage() {
             key={operation.id}
             operation={operation}
             actions={[
-              { label: 'Удалить', onClick: () => handleDeleteOperation(operation.id) },
+              { label: t("generalModal.delete"), onClick: () => handleDeleteOperation(operation.id) },
             ]}
             onClick={() => handleOpenDetails(operation)}
           />
@@ -96,10 +98,10 @@ export function AccountDetailsPage() {
         onClose={() => setModalOpen(false)}
         title={
           modalType === 'addOperation'
-            ? 'Добавить операцию'
+            ? t("operations.addOperation")
             : modalType === 'editAccount'
-              ?'Редактировать счет'
-              : 'Детали операции'
+              ? t("accounts.editAccount")
+              : t("operations.operationDetails")
         }
       >
         {modalType === 'addOperation' && (
@@ -127,15 +129,15 @@ export function AccountDetailsPage() {
           />
         )}
 
-        {modalType === 'operationDetails' && (
+        {modalType === 'operationDetails' &&
           <div className="flex flex-col gap-y-[15px]">
-            <p>Сумма: {selectedOperation?.id} {selectedOperation?.currency ? CURRENCY_NAMES[selectedOperation?.currency] : ''}</p>
-            <p>Откуда: {selectedOperation?.fromName ?? 'Доход'}</p>
-            <p>Куда: {selectedOperation?.toName}</p>
-            <p>Дата: {selectedOperation ? formatDate(selectedOperation?.date) : 'не указана'}</p>
-            <p>Комментарий: {selectedOperation?.comment || '-'}</p>
+            <p>{t('generalModal.amount')}: {selectedOperation?.id} {selectedOperation?.currency ? CURRENCY_NAMES[selectedOperation?.currency] : ''}</p>
+            <p>{t('generalModal.from')}: {selectedOperation?.fromName ?? t('operations.income').toLowerCase()}</p>
+            <p>{t('generalModal.to')}: {selectedOperation?.toName}</p>
+            <p>{t('generalModal.date')}: {selectedOperation?.date ? formatDate(selectedOperation?.date, t) : '-'}</p>
+            <p>{t('generalModal.comment')}: {selectedOperation?.comment || '-'}</p>
           </div>
-        )}
+        }
       </Modal>
     </div>
   )

@@ -3,14 +3,70 @@
   "username": "Username",
   "password": "Password",
   "signIn": "Sign in",
+  "signOut": "Sign out",
   "emptyFields": "Not all fields are filled",
   "loginError": "Incorrect login or password",
   "error": "An error occurred",
   "financialConsultant":"Financial consultant",
-  "accounts": "Accounts",
-  "operations": "Operations",
-  "funds": "Funds",
-  "analytics": "Analytics",
   "settings": "Settings",
-  "user": "User"
+  "user": "User",
+  "invalidOldPassword": "Invalid old password",
+  "changePassword": "Change password",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "currentPassword": "Current password",
+  "newPassword": "New password",
+  "repeatNewPassword": "Repeat new password",
+
+  "generalModal": {
+    "delete": "Delete",
+    "choose": "Choose",
+    "from": "From",
+    "to": "To",
+    "amount": "Amount",
+    "comment": "Comment",
+    "save": "Save",
+    "date": "Date",
+    "categories": "Categories",
+    "subcategories": "Subcategories",
+    "name": "Name",
+    "currency": "Currency",
+    "icon": "Icon",
+    "color": "Color",
+    "edit": "Edit",
+    "notEditable": "Not editable"
+  },
+  "accounts" : {
+    "accounts": "Accounts",
+    "addAccount": "Add account",
+    "editAccount": "Edit account",
+    "totalAccountBalance": "Total balance in accounts"
+  },
+  "operations" : {
+    "operations": "Transactions",
+    "operationHistory": "Transaction history",
+    "addOperation": "Add transaction",
+    "income": "Income",
+    "operationDetails": "Transaction details"
+  },
+  "funds" : {
+    "funds": "Funds",
+    "deposits": "Deposits",
+    "investments": "Investments",
+    "realEstate": "Real estate",
+    "loans": "Loans"
+  },
+  "analytics" : {
+    "analytics": "Analytics",
+    "chooseAccount": "Choose account",
+    "balanceAndExpenses": "Balance and Expenses",
+    "balance": "Balance",
+    "expenses": "Expenses"
+  },
+  "date": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "week": "Week",
+    "month": "Month",
+    "3months": "3 months"
+  }
 }

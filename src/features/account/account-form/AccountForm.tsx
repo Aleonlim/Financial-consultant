@@ -7,6 +7,7 @@ import { Icon } from '@/shared/ui/Icon/Icon'
 import {AVAILABLE_COLORS} from '@/shared/config/colors'
 import {AVAILABLE_ICONS} from '@/shared/config/icons'
 import {Account} from "@/entities/account/model/types";
+import {useTranslation} from "react-i18next";
 
 type Props = {
   account?: Account
@@ -14,6 +15,8 @@ type Props = {
 }
 
 export function AccountForm({ account, onSuccess }: Props) {
+  const { t } = useTranslation()
+
   const isEdit = Boolean(account)
 
   const [name, setName] = useState(account?.name ?? '')
@@ -54,13 +57,13 @@ export function AccountForm({ account, onSuccess }: Props) {
     <div className="flex flex-col gap-y-4">
 
       <Input
-        label="Название"
+        label={t("generalModal.name")}
         value={name}
         onChange={e => setName(e.target.value)}
       />
 
       <div>
-        <label className="block mb-1 text-sm">Валюта {isEdit ? '(поменять нельзя)' : ''}</label>
+        <label className="block mb-1 text-sm">{t("generalModal.currency")} {isEdit ? `(${t("generalModal.notEditable").toLowerCase()})` : ''}</label>
         <select
           value={currency}
           onChange={e => setCurrency(e.target.value as Currency)}
@@ -76,14 +79,14 @@ export function AccountForm({ account, onSuccess }: Props) {
       </div>
 
       <Input
-        label="Начальный баланс"
+        label={t("generalModal.amount")}
         type="number"
         value={balance}
         onChange={e => setBalance(Number(e.target.value))}
       />
 
       <div>
-        <label className="block mb-1 text-sm">Иконка</label>
+        <label className="block mb-1 text-sm">{t("generalModal.icon")}</label>
         <div className="flex  overflow-x-scroll">
           {AVAILABLE_ICONS.map(i => (
             <button
@@ -101,7 +104,7 @@ export function AccountForm({ account, onSuccess }: Props) {
       </div>
 
       <div>
-        <label className="block mb-1 text-sm">Цвет</label>
+        <label className="block mb-1 text-sm">{t("generalModal.color")}</label>
         <div className="flex gap-2">
           {AVAILABLE_COLORS.map(c => (
             <button
@@ -118,7 +121,7 @@ export function AccountForm({ account, onSuccess }: Props) {
       </div>
 
       <Button onClick={handleSubmit} disabled={loading}>
-        Сохранить
+        {t("generalModal.save")}
       </Button>
     </div>
   )

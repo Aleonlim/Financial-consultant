@@ -3,14 +3,70 @@
   "username": "Логин",
   "password": "Пароль",
   "signIn": "Войти",
+  "signOut": "Выйти",
   "emptyFields": "Не все поля заполнены",
   "loginError": "Неверный логин или пароль",
   "error": "Произошла ошибка",
   "financialConsultant":"Финансовый консультант",
-  "accounts": "Счета",
-  "operations": "Операции",
-  "funds": "Капитал",
-  "analytics": "Аналитика",
   "settings": "Настройки",
-  "user": "Пользователь"
+  "user": "Пользователь",
+  "invalidOldPassword": "Неверный старый пароль",
+  "changePassword": "Сменить пароль",
+  "passwordsDoNotMatch": "Пароли не совпадают",
+  "currentPassword": "Текущий пароль",
+  "newPassword": "Новый пароль",
+  "repeatNewPassword": "Повторите новый пароль",
+
+  "generalModal": {
+    "delete": "Удалить",
+    "choose": "Выберите",
+    "from": "Откуда",
+    "to": "Куда",
+    "amount": "Сумма",
+    "comment": "Комментарий",
+    "save": "Сохранить",
+    "date": "Дата",
+    "categories": "Категории",
+    "subcategories": "Подкатегории",
+    "name": "Название",
+    "currency": "Валюта",
+    "icon": "Иконка",
+    "color": "Цвет",
+    "edit": "Редактировать",
+    "notEditable": "Нельзя поменять"
+  },
+  "accounts" : {
+    "accounts": "Счета",
+    "addAccount": "Добавить счет",
+    "editAccount": "Редактировать счет",
+    "totalAccountBalance": "Общий баланс на счетах"
+  },
+  "operations" : {
+    "operations": "Операции",
+    "operationHistory": "История операций",
+    "addOperation": "Добавить операцию",
+    "income": "Доход",
+    "operationDetails": "Детали операции"
+  },
+  "funds" : {
+    "funds": "Капитал",
+    "deposits": "Депозиты",
+    "investments": "Инвестиции",
+    "realEstate": "Недвижимость",
+    "loans": "Кредиты"
+  },
+  "analytics" : {
+    "analytics": "Аналитика",
+    "chooseAccount": "Выберите счет",
+    "balanceAndExpenses": "Баланс и расходы",
+    "balance": "Баланс",
+    "expenses": "Расходы"
+  },
+  "date": {
+    "today": "Сегодня",
+    "yesterday": "Вчера",
+    "week": "Неделя",
+    "month": "Месяц",
+    "3months": "3 месяца"
+  }
 }

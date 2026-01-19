@@ -1,4 +1,8 @@
-export function formatDate(dateStr: string) {
+import { LOCALE_MAP } from '@/shared/config/locale'
+import i18n from "@/shared/config/i18n"
+
+export function formatDate(dateStr: string | Date, t?: (key: string) => string) {
+
   const date = new Date(dateStr)
 
   const today = new Date()
@@ -10,10 +14,15 @@ export function formatDate(dateStr: string) {
     a.getMonth() === b.getMonth() &&
     a.getDate() === b.getDate()
 
-  if (isSameDay(date, today)) return 'Сегодня'
-  if (isSameDay(date, yesterday)) return 'Вчера'
+  if (t){
+    if (isSameDay(date, today)) return t("date.today")
+    if (isSameDay(date, yesterday)) return t("date.yesterday")
+  }
 
-  return date.toLocaleDateString('ru-RU', {
+  const lang = i18n.language
+  const locale = LOCALE_MAP[lang] ?? 'ru-RU'
+
+  return date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
