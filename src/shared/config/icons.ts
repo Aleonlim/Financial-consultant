@@ -1,0 +1,20 @@
+export const AVAILABLE_ICONS = [
+  'wallet', // import WalletIcon from '@mui/icons-material/AccountBalanceWalletRounded'
+  'credit-card', // import CreditCardIcon from '@mui/icons-material/CreditCardRounded'
+  'home', // import HomeIcon from '@mui/icons-material/HomeRounded'
+  'food', // import FoodIcon from '@mui/icons-material/FastfoodRounded'
+  'taxi', // import LocalTaxiRoundedIcon from '@mui/icons-material/LocalTaxiRounded'
+  'bus', // import BusIcon from '@mui/icons-material/DirectionsBusRounded'
+  'transport', // import TransportIcon from '@mui/icons-material/CommuteRounded'
+  'cinema', // import CinemaIcon from '@mui/icons-material/MovieCreationRounded'
+  'music-note', // import MusicNoteIcon from '@mui/icons-material/MusicNoteRounded'
+  'purchase', // import PurchaseIcon from '@mui/icons-material/LocalMallRounded'
+  'household-goods', // import HouseholdGoodsIcon from '@mui/icons-material/OtherHousesRounded';
+  'apartment', // import ApartmentIcon from '@mui/icons-material/ApartmentRounded'
+  'shopping-cart', // import ShoppingCartIcon from '@mui/icons-material/ShoppingCartRounded'
+  'savings', // import SavingsIcon from '@mui/icons-material/SavingsRounded'
+  'restaurant', // import RestaurantIcon from '@mui/icons-material/RestaurantRounded'
+  'entertainment', // import AttractionsIcon from '@mui/icons-material/AttractionsRounded'
+  'investment', // import InvestmentIcon from '@mui/icons-material/ShowChartRounded'
+  'percent', // import PercentIcon from '@mui/icons-material/PercentRounded'
+]

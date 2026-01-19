@@ -1,0 +1,16 @@
+{
+  "loginTitle": "登录",
+  "username": "用户名",
+  "password": "密码",
+  "signIn": "登录",
+  "emptyFields": "并非所有字段都已填写",
+  "loginError": "用户名或密码错误",
+  "error": "发生错误",
+  "financialConsultant": "财务顾问",
+  "accounts": "账户",
+  "operations": "操作",
+  "funds": "资本",
+  "analytics": "分析",
+  "settings": "设置",
+  "user": "用户"
+}

@@ -1,0 +1,16 @@
+{
+  "loginTitle": "Log in",
+  "username": "Username",
+  "password": "Password",
+  "signIn": "Sign in",
+  "emptyFields": "Not all fields are filled",
+  "loginError": "Incorrect login or password",
+  "error": "An error occurred",
+  "financialConsultant":"Financial consultant",
+  "accounts": "Accounts",
+  "operations": "Operations",
+  "funds": "Funds",
+  "analytics": "Analytics",
+  "settings": "Settings",
+  "user": "User"
+}

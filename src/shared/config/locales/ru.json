@@ -1,0 +1,16 @@
+{
+  "loginTitle": "Вход",
+  "username": "Логин",
+  "password": "Пароль",
+  "signIn": "Войти",
+  "emptyFields": "Не все поля заполнены",
+  "loginError": "Неверный логин или пароль",
+  "error": "Произошла ошибка",
+  "financialConsultant":"Финансовый консультант",
+  "accounts": "Счета",
+  "operations": "Операции",
+  "funds": "Капитал",
+  "analytics": "Аналитика",
+  "settings": "Настройки",
+  "user": "Пользователь"
+}
